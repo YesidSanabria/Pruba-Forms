@@ -1,14 +1,14 @@
-<form name="contact" method="POST" data-netlify="true">
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" name="contact" data-netlify="true">
   <input type="hidden" name="form-name" value="contact" />
 
   <label for="name">Nombre:</label>
-  <input type="text" name="name" id="name" required>
+  <input type="text" name="name" id="name" required ngModel>
 
   <label for="email">Email:</label>
-  <input type="email" name="email" id="email" required>
+  <input type="email" name="email" id="email" required ngModel>
 
   <label for="message">Mensaje:</label>
-  <textarea name="message" id="message" required></textarea>
+  <textarea name="message" id="message" required ngModel></textarea>
 
-  <button type="submit">Enviar</button>
+  <button type="submit" [disabled]="contactForm.invalid">Enviar</button>
 </form>
