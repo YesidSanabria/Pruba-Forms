@@ -1,6 +1,14 @@
-<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="contact" />
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <textarea name="message"></textarea>
+
+  <label for="name">Nombre:</label>
+  <input type="text" name="name" id="name" required ngModel>
+
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" required ngModel>
+
+  <label for="message">Mensaje:</label>
+  <textarea name="message" id="message" required ngModel></textarea>
+
+  <button type="submit" [disabled]="contactForm.invalid">Enviar</button>
 </form>
